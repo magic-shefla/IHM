@@ -4,21 +4,19 @@
 
 package view.panes;
 
-import controller.BackButtonControlller;
-import controller.HomeButtonController;
+import controller.*;
 import view.buttons.BackButton;
 import view.buttons.HomeButton;
 import view.buttons.NextButton;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseListener;
 
 public class PanelBottom extends JPanel{
   public JButton back, home, next;
 
 
-  public PanelBottom(BackButtonControlller backController, HomeButtonController homeController){
+  public PanelBottom(ButtonBackEtapeController backController, HomeButtonController homeController, ButtonNextEtapeController playController){
 
     this.back = new BackButton();
     this.back.addActionListener((backController));
@@ -27,6 +25,7 @@ public class PanelBottom extends JPanel{
     this.home.addActionListener(homeController);
 
     this.next = new NextButton();
+    this.next.addActionListener(playController);
 
     //this.back. AJOUTER UN ActionListener
 

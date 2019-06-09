@@ -1,9 +1,6 @@
 package view;
 
-import controller.BackButtonControlller;
-import controller.HomeButtonController;
-import controller.PlayButtonActivityController;
-import controller.SettingsButtonController;
+import controller.*;
 import view.panes.*;
 
 import model.Appli;
@@ -24,7 +21,7 @@ public class MainFrame extends JFrame  {
     private PanelActivity paneCAct;
     private PanelEtapes paneCEta;
 
-    private PanelTop paneT = new PanelTop(new HomeButtonController(this));
+    private PanelTop paneT = new PanelTop(new HomeButtonController(this), new EmergencyButtonController(this));
 
     private PaneCenter lastPane;
 
@@ -49,7 +46,7 @@ public class MainFrame extends JFrame  {
         this.setLayout(new BorderLayout());
 
 
-        this.paneB = new PanelBottom(new BackButtonControlller(this), new HomeButtonController(this));
+        this.paneB = new PanelBottom(new ButtonBackEtapeController(this), new HomeButtonController(this), new ButtonNextEtapeController(this));
         this.bottom = paneB;
         this.generateModel();
         this.add(paneC, BorderLayout.CENTER);
@@ -62,7 +59,7 @@ public class MainFrame extends JFrame  {
 
     public void generateModel(){
         this.paneCCat = new PanelCategorie(model.getCategories(),this);
-        this.paneCAct = new PanelActivity(model.getCategories().get(0).get(0),new SettingsButtonController(this), new PlayButtonActivityController(this));
+        this.paneCAct = new PanelActivity(model.getCategories().get(0).get(0),new SettingsButtonController(this), new PlayButtonActivityController(this), new MoreButtonController(this));
         this.paneC=(paneCAct);
     }
 

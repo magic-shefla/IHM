@@ -7,6 +7,7 @@ package view.components;
 import javax.swing.*;
 import java.awt.*;
 
+import controller.MoreButtonController;
 import controller.PlayButtonActivityController;
 import controller.SettingsButtonController;
 import view.*;
@@ -19,11 +20,11 @@ public class ViewActivity extends JPanel{
   JButton buttonSettings, buttonPlay, buttonMore, img;
   String imgPath;
 
-  public ViewActivity(SettingsButtonController settingsButton, PlayButtonActivityController playController){
-    this.initComponents(settingsButton, playController);
+  public ViewActivity(SettingsButtonController settingsButton, PlayButtonActivityController playController, MoreButtonController moreButton){
+    this.initComponents(settingsButton, playController, moreButton);
   }
 
-  public void initComponents(SettingsButtonController settingsButton, PlayButtonActivityController playController){
+  public void initComponents(SettingsButtonController settingsButton, PlayButtonActivityController playController, MoreButtonController moreButton){
     this.container = new JPanel();
     this.buttonContainer = new JPanel();
     this.generalPanel = new JPanel();
@@ -33,6 +34,7 @@ public class ViewActivity extends JPanel{
     this.buttonPlay = new JButton();
     this.buttonPlay.addActionListener(playController);
     this.buttonMore = new JButton();
+    this.buttonMore.addActionListener(moreButton);
 
     this.img = new JButton("Image");
     try {

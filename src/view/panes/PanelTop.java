@@ -4,8 +4,10 @@
 
 package view.panes;
 
+import controller.EmergencyButtonController;
 import controller.HomeButtonController;
 import view.Appli;
+import view.buttons.EmergencyButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,11 +28,11 @@ public class PanelTop extends JPanel{
       "December"};
 
 
-  public PanelTop(HomeButtonController homeButton){
-    this.initComponents(homeButton);
+  public PanelTop(HomeButtonController homeButton, EmergencyButtonController emergencyButton){
+    this.initComponents(homeButton, emergencyButton);
   }
 
-  public void initComponents(HomeButtonController homeButton){
+  public void initComponents(HomeButtonController homeButton, EmergencyButtonController emergencyButton){
     //initPanel
     this.setBorder(BorderFactory.createLineBorder(java.awt.Color.BLACK));
     this.setLayout(new GridLayout(1,3));
@@ -89,7 +91,7 @@ public class PanelTop extends JPanel{
 
     //Panel 3
 
-    this.firstAid = new JButton("First Aid");
+    this.firstAid = new EmergencyButton(emergencyButton);
     try{
     this.firstAid.setIcon(new ImageIcon(getClass().getResource("../resources/firstAid.jpg")));
     }
