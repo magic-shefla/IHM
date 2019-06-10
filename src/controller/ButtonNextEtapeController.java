@@ -14,5 +14,7 @@ public class ButtonNextEtapeController implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         System.out.println("NextEtapeClicked");
+        this.frame.switchEtape(this.frame.getCurrentEtaNbr()+1);
+        this.frame.validate();
     }
 }

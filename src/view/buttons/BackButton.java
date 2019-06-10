@@ -8,8 +8,8 @@ public class BackButton extends JButton{
     private Image img;
 
     public BackButton(){
-        super("Back");
-        this.path = "../resources/arrowLeft.png";
+        super("");
+        this.path = "../../resources/arrowLeft.png";
         try {
             this.setIcon(new ImageIcon(getClass().getResource(this.path)));
         }

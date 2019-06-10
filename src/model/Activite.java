@@ -9,30 +9,28 @@ public class Activite{
   private String imgPath;
   private ArrayList<Etape> etapes;
   private String description;
-  private Etape current;
-
-//  private ViewActivite view;
-
-  public Activite(String n, String d, ArrayList<Etape> e, Object view){
-    this.name = n;
-    this.description = d;
-    this.etapes = e;
-//    this.view = view;
-  }
-
-  public Activite(String n, String d, ArrayList<Etape> e){
-    this.name = n;
-    this.description = d;
-    this.etapes = e;
-
-//  this.view = new ViewActivite();
-  }
 
 
   public Activite(String n, String d){
     this.name = n;
     this.description = d;
+    this.etapes = new ArrayList<Etape>();
+    this.imgPath = "../../resources/firstAid.jpg";
+  }
+
+  public Activite(String n, String d, ArrayList<Etape> e, String p){
+    this.name = n;
+    this.description = d;
+    this.etapes = e;
+    this.imgPath = p;
+  }
+
+
+  public Activite(String n, String d, String p){
+    this.name = n;
+    this.description = d;
     this.etapes = new ArrayList<>();
+    this.imgPath = p;
   }
 
   public void add(Etape e){
@@ -61,8 +59,28 @@ public class Activite{
     }
   }
 
-  public ArrayList<Etape> get(int i ){
+  public Etape get(int i ){
+    return this.etapes.get(i);
+  }
+
+  public ArrayList<Etape> getEtapes(){
     return this.etapes;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getImgPath() {
+    return imgPath;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public int getSize(){
+    return this.etapes.size();
   }
 
   public String toString(){

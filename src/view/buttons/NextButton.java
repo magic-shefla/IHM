@@ -8,8 +8,8 @@ public class NextButton extends JButton {
     private Image img;
 
     public NextButton(){
-        super("Next");
-        this.path = "../resources/Next.png";
+        super("");
+        this.path = "../../resources/Next.png";
         try {
             this.setIcon(new ImageIcon(getClass().getResource(this.path)));
         }

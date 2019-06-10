@@ -22,8 +22,8 @@ public class HomeButton extends JButton{
     }
 
     public HomeButton(){
-        super("Home");
-        this.path = "../resources/Home.png";
+        super("");
+        this.path = "../../resources/Home.png";
         try {
             this.setIcon(new ImageIcon(getClass().getResource(this.path)));
         }

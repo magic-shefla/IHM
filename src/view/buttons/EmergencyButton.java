@@ -11,8 +11,8 @@ public class EmergencyButton extends JButton {
     private Image img;
 
     public EmergencyButton(EmergencyButtonController emergencyButton){
-        super("Emergency");
-        this.path = "../resources/Home.png";
+        super("");
+        this.path = "../../resources/Home.png";
         try {
             this.setIcon(new ImageIcon(getClass().getResource(this.path)));
         }

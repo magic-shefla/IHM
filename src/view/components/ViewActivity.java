@@ -10,35 +10,50 @@ import java.awt.*;
 import controller.MoreButtonController;
 import controller.PlayButtonActivityController;
 import controller.SettingsButtonController;
+import model.Activite;
 import view.*;
+import view.buttons.PlayButtonActivity;
 //import controller.*;
 //import model.*;
 
 public class ViewActivity extends JPanel{
 
   JPanel container, buttonContainer, generalPanel;
-  JButton buttonSettings, buttonPlay, buttonMore, img;
+  JButton buttonSettings, buttonPlay, buttonMore;
+  JLabel img;
   String imgPath;
 
-  public ViewActivity(SettingsButtonController settingsButton, PlayButtonActivityController playController, MoreButtonController moreButton){
-    this.initComponents(settingsButton, playController, moreButton);
+  public ViewActivity(SettingsButtonController settingsButton, PlayButtonActivityController playController, MoreButtonController moreButton,int numAct, Activite a){
+    this.initComponents(settingsButton, playController, moreButton,numAct, a);
   }
 
-  public void initComponents(SettingsButtonController settingsButton, PlayButtonActivityController playController, MoreButtonController moreButton){
+  public void initComponents(SettingsButtonController settingsButton, PlayButtonActivityController playController,
+                             MoreButtonController moreButton, int numAct, Activite a){
     this.container = new JPanel();
     this.buttonContainer = new JPanel();
     this.generalPanel = new JPanel();
 
     this.buttonSettings = new JButton();
     this.buttonSettings.addActionListener(settingsButton);
-    this.buttonPlay = new JButton();
+
+    try {
+      this.buttonSettings.setIcon(new ImageIcon(getClass().getResource("../../resources/Settings.png")));
+    }
+    catch (NullPointerException e){
+      e.printStackTrace();
+    }
+
+    this.buttonPlay = new PlayButtonActivity(numAct,"../../resources/Next.png");
     this.buttonPlay.addActionListener(playController);
-    this.buttonMore = new JButton();
+    this.buttonMore = new JButton("More");
     this.buttonMore.addActionListener(moreButton);
 
-    this.img = new JButton("Image");
+    this.img = new JLabel(a.getName());
+    this.img.setHorizontalAlignment(JLabel.CENTER);
+    this.img.setVerticalAlignment(JLabel.CENTER);
+
     try {
-      this.img.setIcon(new ImageIcon(getClass().getResource("../resources/firstAid.jpg")));
+      this.img.setIcon(new ImageIcon(getClass().getResource(a.getImgPath())));
     }
     catch (NullPointerException e){
       e.printStackTrace();
@@ -66,7 +81,6 @@ public class ViewActivity extends JPanel{
     this.setPreferredSize(new Dimension(150,200 ));
 //    this.setMaximumSize(new Dimension(360, 480));
 //    this.setPreferredSize(new Dimension(50,50));
-
 
   }
 

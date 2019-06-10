@@ -1,6 +1,6 @@
 package view.panes;
 
-import controller.PlayButtonActivityController;
+import controller.PlayButtonCategorieController;
 import controller.SettingsButtonController;
 import model.Categorie;
 import view.MainFrame;
@@ -20,10 +20,12 @@ public class PanelCategorie extends JPanel {
     }
 
     public void initComponents(ArrayList<Categorie> cats, MainFrame frame){
+        int i = 0;
         for (Categorie cat : cats){
-            ViewCategorie viewCat = new ViewCategorie(new PlayButtonActivityController(frame), new SettingsButtonController(frame));
+            ViewCategorie viewCat = new ViewCategorie(new PlayButtonCategorieController(frame), new SettingsButtonController(frame), i, cat);
             this.categories.add(viewCat);
             this.add(viewCat);
+            i++;
         }
 
     }

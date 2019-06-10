@@ -6,7 +6,7 @@ package view.panes;
 
 import controller.EmergencyButtonController;
 import controller.HomeButtonController;
-import view.Appli;
+import model.Appli;
 import view.buttons.EmergencyButton;
 
 import javax.swing.*;
@@ -18,7 +18,7 @@ import java.text.*;
 //import model.*;
 
 public class PanelTop extends JPanel{
-  private JLabel name, firstName, hourMinute, dayNum, day, year, month;
+  private JLabel  hourMinute, dayNum, day, year, month;
   private JButton firstAid, logo;
   private JPanel p1, p2, p3;
   private Calendar c;
@@ -44,7 +44,7 @@ public class PanelTop extends JPanel{
 
     this.logo = new JButton("Logo");
     try {
-      this.logo.setIcon(new ImageIcon(getClass().getResource("../resources/Icon.jpg")));
+      this.logo.setIcon(new ImageIcon(getClass().getResource("../../resources/Icon.png")));
     }
     catch (NullPointerException e){
       e.printStackTrace();
@@ -54,7 +54,6 @@ public class PanelTop extends JPanel{
     this.logo.setPreferredSize(new Dimension(80,80));
     this.logo.setVerticalTextPosition(AbstractButton.BOTTOM);
     this.logo.setHorizontalTextPosition(AbstractButton.CENTER);
-    //this.logo. AJOUTER UN ActionListener
 
     p1.setBorder(BorderFactory.createLineBorder(java.awt.Color.BLACK));
     p1.setLayout(new BorderLayout());
@@ -75,17 +74,13 @@ public class PanelTop extends JPanel{
     this.month = new JLabel(this.MONTHS[c.get(Calendar.MONTH)]);
     this.monthNum = c.get(Calendar.MONTH);
 
-    this.name = new JLabel(Appli.getName());
-    this.firstName = new JLabel(Appli.getFirstName());
+
 
     p2.add(this.day);
     p2.add(this.dayNum);
     p2.add(this.month);
     p2.add(this.year);
-    p2.add(this.name);
-    p2.add(this.firstName);
     p2.add(new JLabel());
-    p2.add(this.hourMinute);
 
     this.add(p2);
 
@@ -93,7 +88,7 @@ public class PanelTop extends JPanel{
 
     this.firstAid = new EmergencyButton(emergencyButton);
     try{
-    this.firstAid.setIcon(new ImageIcon(getClass().getResource("../resources/firstAid.jpg")));
+    this.firstAid.setIcon(new ImageIcon(getClass().getResource("../../resources/firstAid.jpg")));
     }
     catch (NullPointerException e){
       e.printStackTrace();
